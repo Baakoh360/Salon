@@ -954,6 +954,84 @@
                 padding: 20px 15px;
             }
         }
+        /* Service Card Optimizations for iPhone XR */
+.service-image {
+    height: 200px; /* Increased height for better visibility */
+    background-color: #ddd;
+    background-size: cover;
+    background-position: center center;
+    position: relative;
+    overflow: hidden;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.service-card {
+    background-color: var(--white);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.4s ease;
+    transform: translateY(0);
+    opacity: 1;
+    margin-bottom: 20px; /* Add space between cards */
+}
+
+.service-content {
+    padding: 20px; /* Increased padding */
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Specific for iPhone XR and similar devices */
+@media only screen 
+and (device-width: 414px) 
+and (device-height: 896px) 
+and (-webkit-device-pixel-ratio: 2),
+/* General iPhone styles */
+(max-width: 480px) {
+    .services-grid {
+        grid-template-columns: 1fr; /* Single column layout */
+        gap: 25px; /* Increased gap */
+        padding: 0 10px; /* Add some side padding */
+    }
+    
+    .service-image {
+        height: 220px; /* Even taller images for iPhone XR */
+        border-radius: 8px 8px 0 0;
+    }
+    
+    .service-card {
+        max-width: 100%; /* Ensure cards don't overflow */
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+    
+    .service-content h3 {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    
+    .service-content p {
+        font-size: 14px;
+        line-height: 1.5;
+        margin-bottom: 12px;
+    }
+    
+    .price {
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+    
+    .btn {
+        padding: 10px 15px;
+        font-size: 15px;
+        width: 100%; /* Full width buttons */
+    }
+}
     </style>
 </head>
 
