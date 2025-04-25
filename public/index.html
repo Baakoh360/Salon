@@ -1,0 +1,1945 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elegant Cuts | Salon Booking</title>
+    <style>
+        /* Global Styles */
+        
+         :root {
+            --primary: #9c8178;
+            --primary-dark: #7d655d;
+            --secondary: #f5efe9;
+            --accent: #d4b499;
+            --text: #333333;
+            --light-text: #777777;
+            --white: #ffffff;
+            --success: #4caf50;
+            --error: #f44336;
+            --transition-speed: 0.5s;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--secondary);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            /* Prevent horizontal scroll during animations */
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        /* Header Styles */
+        
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            color: var(--primary);
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+        
+        .logo:hover::after {
+            width: 100%;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 20px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-active {
+            color: var(--primary) !important;
+        }
+        
+        .nav-active::after {
+            width: 100% !important;
+        }
+        
+        .btn {
+            background-color: var(rgb(133, 113, 113));
+            color: var(red);
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgb(197, 190, 12);
+            transition: all 0.4s ease;
+        }
+        
+        .btn:hover::before {
+            left: 100%;
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn:active {
+            transform: translateY(0);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+        /* Mobile menu */
+        
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            background: none;
+            border: none;
+            color: var(--primary);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .menu-toggle:hover {
+            transform: rotate(90deg);
+        }
+        /* Hero Section */
+        
+        .hero {
+            background-image: linear-gradient(rgba(67, 66, 66, 0), rgba(0, 0, 0, 0.5)), url('https://sdmntprsouthcentralus.oaiusercontent.com/files/00000000-1c68-61f7-8a98-e875bdcab36c/raw?se=2025-04-25T00%3A22%3A38Z&sp=r&sv=2024-08-04&sr=b&scid=5235e9ae-d951-526b-b081-848cf371c7ee&skoid=365eb242-95ba-4335-a618-2c9f8f766a86&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-04-24T03%3A31%3A11Z&ske=2025-04-25T03%3A31%3A11Z&sks=b&skv=2024-08-04&sig=QL35O8hBAznBts3OVVy8H6xZQ%2BYL8IRT2p3Mf1vcBDk%3D');
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            color: var(--white);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(156, 129, 120, 0.3) 0%, rgba(212, 180, 153, 0.3) 100%);
+            z-index: 1;
+        }
+        
+        .hero-content {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 0 15px;
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .hero h1 {
+            font-size: 32px;
+            margin-bottom: 15px;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards;
+            animation-delay: 0.3s;
+        }
+        
+        .hero p {
+            font-size: 16px;
+            margin-bottom: 25px;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards;
+            animation-delay: 0.6s;
+        }
+        
+        .hero .btn {
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards;
+            animation-delay: 0.9s;
+        }
+        /* Services Section */
+        
+        .services {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .section-title h2 {
+            font-size: 28px;
+            color: var(--primary);
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+        
+        .section-title p {
+            color: var(--light-text);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        
+        .service-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.4s ease;
+            transform: translateY(20px);
+            opacity: 0;
+        }
+        
+        .service-card.animate {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .service-image {
+            height: 150px;
+            background-color: #ddd;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0);
+            transition: background 0.3s ease;
+        }
+        
+        .service-card:hover .service-image::before {
+            background: rgba(0, 0, 0, 0.2);
+        }
+        
+        .service-content {
+            padding: 15px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .service-content h3 {
+            color: var(--primary);
+            margin-bottom: 8px;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+        
+        .service-card:hover .service-content h3 {
+            color: var(--primary-dark);
+        }
+        
+        .service-content p {
+            color: var(--light-text);
+            margin-bottom: 15px;
+            font-size: 14px;
+            flex-grow: 1;
+        }
+        
+        .price {
+            font-weight: bold;
+            color: var(--text);
+            font-size: 16px;
+            margin-bottom: 15px;
+            transition: transform 0.3s ease;
+        }
+        
+        .service-card:hover .price {
+            transform: scale(1.05);
+        }
+        /* Booking Form */
+        
+        .booking-section {
+            padding: 60px 0;
+            background-color: var(--white);
+        }
+        
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: var(--secondary);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.6s ease;
+        }
+        
+        .form-container.animate {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all 0.4s ease;
+        }
+        
+        .form-group.animate {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            font-size: 15px;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(156, 129, 120, 0.2);
+        }
+        
+        .error-message {
+            color: var(--error);
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+            animation: shake 0.5s ease;
+        }
+        
+        @keyframes shake {
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+            10%,
+            30%,
+            50%,
+            70%,
+            90% {
+                transform: translateX(-5px);
+            }
+            20%,
+            40%,
+            60%,
+            80% {
+                transform: translateX(5px);
+            }
+        }
+        
+        .time-slots {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .time-slot {
+            padding: 10px;
+            text-align: center;
+            background-color: var(--white);
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        
+        .time-slot.available {
+            color: var(--text);
+            cursor: pointer;
+        }
+        
+        .time-slot.available:hover {
+            background-color: rgba(156, 129, 120, 0.1);
+            border-color: var(--primary);
+        }
+        
+        .time-slot.unavailable {
+            color: var(--light-text);
+            background-color: #f5f5f5;
+            cursor: not-allowed;
+            text-decoration: line-through;
+        }
+        
+        .time-slot.selected {
+            background-color: var(--primary);
+            color: var(--white);
+            border-color: var(--primary-dark);
+            transform: scale(1.05);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        /* About Section */
+        
+        .about-section {
+            padding: 60px 0;
+            background-color: var(--secondary);
+        }
+        
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 30px;
+        }
+        
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            height: 400px;
+            background-image: url('https://sdmntprsouthcentralus.oaiusercontent.com/files/00000000-f254-61f7-9840-3b29e4c2ad07/raw?se=2025-04-25T00%3A22%3A38Z&sp=r&sv=2024-08-04&sr=b&scid=173a3f18-0df4-54ca-aaba-309cf35384fe&skoid=365eb242-95ba-4335-a618-2c9f8f766a86&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-04-24T04%3A12%3A42Z&ske=2025-04-25T04%3A12%3A42Z&sks=b&skv=2024-08-04&sig=OX7K4Yh04ACILOv%2BqxOpNz0uCY4MDKOks%2BEbZ85qEu4%3D');
+            background-size: cover;
+            background-position: center;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transform: translateX(-20px);
+            opacity: 0;
+            transition: all 0.6s ease;
+        }
+        
+        .about-image.animate {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+            transform: translateX(20px);
+            opacity: 0;
+            transition: all 0.6s ease;
+        }
+        
+        .about-text.animate {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        
+        .about-text h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .about-text h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+        
+        .about-text p {
+            margin-bottom: 15px;
+        }
+        /* Contact Section */
+        
+        .contact-section {
+            padding: 60px 0;
+            background-color: var(--white);
+        }
+        
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.6s ease;
+        }
+        
+        .contact-info.animate {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .contact-info h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .contact-info h3::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+        
+        .contact-info p {
+            margin-bottom: 15px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 18px;
+        }
+        
+        .contact-map {
+            flex: 1;
+            min-width: 300px;
+            height: 300px;
+            background-color: #eee;
+            border-radius: 10px;
+            background-image: url('https://th.bing.com/th/id/R.625fa4dfb6de8b290e7472506805300a?rik=FZrQZmV9g52bZg&pid=ImgRaw&r=0');
+            background-size: cover;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.6s ease;
+        }
+        
+        .contact-map.animate {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        /* Confirmation */
+        
+        .confirmation {
+            text-align: center;
+            padding: 50px 0;
+        }
+        
+        .confirmation-icon {
+            font-size: 70px;
+            color: var(--success);
+            margin-bottom: 20px;
+            animation: scaleIn 0.5s ease;
+        }
+        
+        @keyframes scaleIn {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            60% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        
+        .confirmation h2 {
+            animation: fadeInUp 0.6s ease;
+        }
+        
+        .confirmation p {
+            animation: fadeInUp 0.8s ease;
+        }
+        
+        .booking-details {
+            background-color: var(--white);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            margin: 30px auto;
+            text-align: left;
+            animation: fadeInUp 1s ease;
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .booking-details h3 {
+            margin-bottom: 20px;
+            text-align: center;
+            color: var(--primary);
+        }
+        
+        .detail-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .detail-item:last-child {
+            border-bottom: none;
+        }
+        
+        .detail-item span:first-child {
+            font-weight: 500;
+            color: var(--primary);
+        }
+        /* Footer */
+        
+        footer {
+            background-color: var(--primary-dark);
+            color: var(--white);
+            padding: 40px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 15px;
+            font-size: 18px;
+            position: relative;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 30px;
+            height: 2px;
+            background-color: var(--accent);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        
+        .footer-column a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        
+        .footer-column a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: var(--white);
+            transition: width 0.3s ease;
+        }
+        
+        .footer-column a:hover {
+            color: var(--white);
+        }
+        
+        .footer-column a:hover::after {
+            width: 100%;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+        }
+        /* Page Transitions */
+        
+        .page {
+            display: none;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .active-page {
+            display: block;
+            animation: pageTransition 0.6s forwards;
+        }
+        
+        @keyframes pageTransition {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        /* Custom Animation Keyframes */
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        /* Responsive Design */
+        
+        @media (max-width: 992px) {
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background-color: var(--white);
+                padding: 0;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                opacity: 0;
+                transform: translateY(-20px);
+                transition: all 0.3s ease;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            .nav-links.active {
+                display: flex;
+                flex-direction: column;
+                opacity: 1;
+                transform: translateY(0);
+                animation: slideDown 0.4s ease;
+            }
+            @keyframes slideDown {
+                from {
+                    opacity: 0;
+                    transform: translateY(-20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+            .nav-links.active li {
+                margin: 0;
+                text-align: center;
+                transition: background-color 0.3s ease;
+            }
+            .nav-links.active li:hover {
+                background-color: rgba(156, 129, 120, 0.1);
+            }
+            .nav-links.active a {
+                display: block;
+                padding: 15px 0;
+                margin: 0;
+            }
+            .nav-links.active a::after {
+                display: none;
+            }
+            .time-slots {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        /* iPhone X and similar sized devices */
+        
+        @media (max-width: 480px) {
+            .services-grid {
+                grid-template-columns: repeat(1, 1fr);
+                gap: 15px;
+            }
+            .service-card {
+                min-height: auto;
+            }
+            .service-image {
+                height: 120px;
+            }
+            .service-content h3 {
+                font-size: 16px;
+            }
+            .service-content p {
+                font-size: 13px;
+                margin-bottom: 10px;
+            }
+            .price {
+                font-size: 15px;
+                margin-bottom: 10px;
+            }
+            .btn {
+                padding: 8px 15px;
+                font-size: 14px;
+            }
+            .time-slots {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .hero {
+                height: 350px;
+            }
+            .hero h1 {
+                font-size: 28px;
+            }
+            .section-title h2 {
+                font-size: 24px;
+            }
+            .form-container {
+                padding: 20px 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo" id="home-link">Elegant Cuts</a>
+                <button class="menu-toggle" id="menu-toggle">☰</button>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="#" id="home-nav" class="nav-active">Home</a></li>
+                    <li><a href="#" id="services-nav">Services</a></li>
+                    <li><a href="#" id="booking-nav">Book Now</a></li>
+                    <li><a href="#" id="about-nav">About Us</a></li>
+                    <li><a href="#" id="contact-nav">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Home Page -->
+    <div id="home-page" class="page active-page">
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Book Your Next Style</h1>
+                    <p>Experience professional salon services with our skilled stylists. Book your appointment today.</p>
+                    <a href="#" class="btn" id="hero-booking-btn">Book Appointment</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="services" id="services">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Our Services</h2>
+                    <p>Discover our range of professional salon services</p>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-image" style="background-image: url('https://th.bing.com/th/id/R.c06a22d0bb9b2d7149f16861ab4ada4e?rik=6nGPj7n2QUnrXw&pid=ImgRaw&r=0')"></div>
+                        <div class="service-content">
+                            <h3>Haircut & Style</h3>
+                            <p>Professional haircut with washing and blow-dry styling.</p>
+                            <div class="price">GH₵35</div>
+                            <a href="#" class="btn btn-outline service-booking-btn" data-service="Haircut & Style" data-price="35">Book Now</a>
+                        </div>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-image" style="background-image: url('https://th.bing.com/th/id/R.d806a21904325781e1616d82f9bc2171?rik=VOppx3gmiJd4jA&pid=ImgRaw&r=0&sres=1&sresct=1')"></div>
+                        <div class="service-content">
+                            <h3>Hair Coloring</h3>
+                            <p>Full hair coloring service with premium products.</p>
+                            <div class="price">GH₵85</div>
+                            <a href="#" class="btn btn-outline service-booking-btn" data-service="Hair Coloring" data-price="85">Book Now</a>
+                        </div>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-image" style="background-image: url('https://tse3.mm.bing.net/th/id/OIP.qgnPzY_Ivliyga3kBE3skQAAAA?pid=ImgDet&w=178&h=118&c=7&dpr=1.5')"></div>
+                        <div class="service-content">
+                            <h3>Hair Treatment</h3>
+                            <p>Rejuvenating treatment to repair damaged hair.</p>
+                            <div class="price">GH₵65</div>
+                            <a href="#" class="btn btn-outline service-booking-btn" data-service="Hair Treatment" data-price="65">Book Now</a>
+                        </div>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-image" style="background-image: url('https://th.bing.com/th/id/R.5258e2630d2bd45e3a684e07d000785a?rik=GIkLbl%2bZ5FjMmw&riu=http%3a%2f%2fgoldentouchmassagephuket.com%2fwp-content%2fuploads%2f2016%2f08%2fMANICURE-PEDICURE-IN-PHUKET.jpg&ehk=kc9cIfERvgiX13rj0KP8NwhsieeTTUvGvcrJFbvI8nY%3d&risl=&pid=ImgRaw&r=0')"></div>
+                        <div class="service-content">
+                            <h3>Manicure & Pedicure</h3>
+                            <p>Complete nail care service with polish application.</p>
+                            <div class="price">GH₵45</div>
+                            <a href="#" class="btn btn-outline service-booking-btn" data-service="Manicure & Pedicure" data-price="45">Book Now</a>
+                        </div>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-image" style="background-image: url('https://tse2.mm.bing.net/th/id/OIP.xtjnNOFftaGKNLwcvBBKqAHaE8?w=784&h=523&rs=1&pid=ImgDetMain')"></div>
+                        <div class="service-image" style="background-image: url('https://th.bing.com/th/id/R.68a3f2012b46445bc49abff37dc33453?rik=4BYYJI8lyyO59w&pid=ImgRaw&r=0')"></div>
+                        <div class="service-content">
+                            <h3>Facial Treatment</h3>
+                            <p>Revitalizing facial treatment for healthy, glowing skin.</p>
+                            <div class="price">GH₵55</div>
+                            <a href="#" class="btn btn-outline service-booking-btn" data-service="Facial Treatment" data-price="55">Book Now</a>
+                        </div>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-image" style="background-image: url('https://tse3.mm.bing.net/th/id/OIP.dcl68iN6NavCIJDiZMrUOAHaHa?rs=1&pid=ImgDetMain')"></div>
+                        <div class="service-content">
+                            <h3>Hair Extensions</h3>
+                            <p>Quality hair extensions applied by experienced stylists.</p>
+                            <div class="price">GH₵120</div>
+                            <a href="#" class="btn btn-outline service-booking-btn" data-service="Hair Extensions" data-price="120">Book Now</a>
+                        </div>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-image" style="background-image: url('https://cdn-ca.dg1.services/6/697/4911/o/Bridal%20Banner%202.png')"></div>
+                        <div class="service-content">
+                            <h3>Bridal Package</h3>
+                            <p>Complete beauty preparation for your special day. Includes hair styling, makeup, manicure, and a trial session.</p>
+                            <div class="price">GH₵250</div>
+                            <a href="#" class="btn btn-outline service-booking-btn" data-service="Bridal Package" data-price="250">Book Now</a>
+                        </div>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-image" style="background-image: url('https://img.freepik.com/foto-gratis/hombre-elegante-sentado-barberia_1157-21208.jpg')"></div>
+                        <div class="service-content">
+                            <h3>Men's Grooming</h3>
+                            <p>Specialized haircuts and grooming services for men. Includes precise cutting, beard trimming, and styling.</p>
+                            <div class="price">GH₵30</div>
+                            <a href="#" class="btn btn-outline service-booking-btn" data-service="Men's Grooming" data-price="30">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+    </section>
+
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Us</h2>
+                <p>Learn more about our salon and team</p>
+            </div>
+            <div class="about-content">
+                <div class="about-image"></div>
+                <div class="about-text">
+                    <h2>Your Beauty is Our Passion</h2>
+                    <p>At Elegant Cuts, we believe that everyone deserves to feel beautiful and confident. Our team of experienced stylists is dedicated to providing top-quality salon services in a relaxing and welcoming environment.</p>
+                    <p>Founded in 2010, our salon has grown to become a trusted name in beauty services. We use only premium products and stay updated with the latest trends and techniques to ensure the best results for our clients.</p>
+                    <p>Our mission is to enhance your natural beauty and help you express your unique style. Whether you're looking for a subtle change or a bold new look, we're here to bring your vision to life.</p>
+                    <a href="#" class="btn" id="about-booking-btn">Book Your Visit</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+                <p>Get in touch with our salon</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Visit Our Salon</h3>
+                    <p>Feel free to visit our salon or contact us with any questions or appointment requests.</p>
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div>Inside Kumasi City Mall</div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📱</div>
+                        <div>(555) 123-4567</div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div>info@elegantcuts.com</div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">🕒</div>
+                        <div>
+                            Mon-Fri: 9am - 7pm<br> Sat: 10am - 6pm<br> Sun: Closed
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-map"></div>
+            </div>
+        </div>
+    </section>
+    </div>
+
+
+
+    <!-- Booking Page -->
+    <div id="booking-page" class="page">
+        <section class="booking-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Book Your Appointment</h2>
+                    <p>Schedule your visit to our salon</p>
+                </div>
+                <div class="form-container">
+                    <form id="booking-form">
+                        <div class="form-group">
+                            <label for="service">Select Service</label>
+                            <select id="service" class="form-control" required>
+                            <option value="">-- Select a Service --</option>
+                            <option value="Haircut & Style" data-price="35">Haircut & Style - $35</option>
+                            <option value="Hair Coloring" data-price="85">Hair Coloring - $85</option>
+                            <option value="Hair Treatment" data-price="65">Hair Treatment - $65</option>
+                            <option value="Manicure & Pedicure" data-price="45">Manicure & Pedicure - $45</option>
+                            <option value="Facial Treatment" data-price="55">Facial Treatment - $55</option>
+                            <option value="Hair Extensions" data-price="120">Hair Extensions - $120</option>
+                            <option value="Bridal Package" data-price="250">Bridal Package - $250</option>
+                            <option value="Men's Grooming" data-price="30">Men's Grooming - $30</option>
+                        </select>
+                            <div class="error-message" id="service-error">Please select a service</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="stylist">Select Stylist (Optional)</label>
+                            <select id="stylist" class="form-control">
+                            <option value="">-- Any Available Stylist --</option>
+                            <option value="Emma">Emma - Senior Stylist</option>
+                            <option value="Michael">Michael - Color Specialist</option>
+                            <option value="Sophia">Sophia - Nail Technician</option>
+                            <option value="James">James - Men's Grooming Expert</option>
+                        </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="date">Select Date</label>
+                            <input type="date" id="date" class="form-control" required min="2025-04-21">
+                            <div class="error-message" id="date-error">Please select a valid date</div>
+                        </div>
+                        <div class="form-group" id="time-slot-group">
+                            <label>Select Time</label>
+                            <div class="time-slots">
+                                <div class="time-slot available" data-time="9:00">9:00 AM</div>
+                                <div class="time-slot available" data-time="10:00">10:00 AM</div>
+                                <div class="time-slot available" data-time="11:00">11:00 AM</div>
+                                <div class="time-slot unavailable" data-time="12:00">12:00 PM</div>
+                                <div class="time-slot available" data-time="1:00">1:00 PM</div>
+                                <div class="time-slot available" data-time="2:00">2:00 PM</div>
+                                <div class="time-slot unavailable" data-time="3:00">3:00 PM</div>
+                                <div class="time-slot available" data-time="4:00">4:00 PM</div>
+                                <div class="time-slot available" data-time="5:00">5:00 PM</div>
+                                <div class="time-slot available" data-time="6:00">6:00 PM</div>
+                            </div>
+                            <input type="hidden" id="selected-time" required>
+                            <div class="error-message" id="time-error">Please select a time slot</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" class="form-control" required>
+                            <div class="error-message" id="name-error">Please enter your name</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" class="form-control" required>
+                            <div class="error-message" id="email-error">Please enter a valid email address</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" class="form-control" required>
+                            <div class="error-message" id="phone-error">Please enter a valid phone number</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="notes">Special Requests (Optional)</label>
+                            <textarea id="notes" class="form-control" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn" id="submit-booking">Book Appointment</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Confirmation Page -->
+    <div id="confirmation-page" class="page">
+        <section class="confirmation">
+            <div class="container">
+                <div class="confirmation-icon">✓</div>
+                <h2>Booking Confirmed!</h2>
+                <p>Your appointment has been successfully scheduled.</p>
+                <div class="booking-details">
+                    <h3>Appointment Details</h3>
+                    <div class="detail-item">
+                        <span>Service:</span>
+                        <span id="confirm-service"></span>
+                    </div>
+                    <div class="detail-item">
+                        <span>Stylist:</span>
+                        <span id="confirm-stylist"></span>
+                    </div>
+                    <div class="detail-item">
+                        <span>Date:</span>
+                        <span id="confirm-date"></span>
+                    </div>
+                    <div class="detail-item">
+                        <span>Time:</span>
+                        <span id="confirm-time"></span>
+                    </div>
+                    <div class="detail-item">
+                        <span>Price:</span>
+                        <span id="confirm-price"></span>
+                    </div>
+                </div>
+                <p>A confirmation email has been sent to <span id="confirm-email"></span>.</p>
+                <p>If you need to make any changes to your appointment, please contact us at (555) 123-4567.</p>
+                <a href="#" class="btn" id="back-to-home">Return to Home</a>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Elegant Cuts</h3>
+                    <p>Your trusted salon for professional beauty services and exceptional customer care.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#" class="footer-home-link">Home</a></li>
+                        <li><a href="#" class="footer-services-link">Services</a></li>
+                        <li><a href="#" class="footer-booking-link">Book Now</a></li>
+                        <li><a href="#" class="footer-about-link">About Us</a></li>
+                        <li><a href="#" class="footer-contact-link">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#" class="service-link" data-service="Haircut & Style">Haircut & Style</a></li>
+                        <li><a href="#" class="service-link" data-service="Hair Coloring">Hair Coloring</a></li>
+                        <li><a href="#" class="service-link" data-service="Hair Treatment">Hair Treatment</a></li>
+                        <li><a href="#" class="service-link" data-service="Manicure & Pedicure">Manicure & Pedicure</a></li>
+                        <li><a href="#" class="service-link" data-service="Facial Treatment">Facial Treatment</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <p>123 Beauty Street<br>Fashion District, City</p>
+                    <p>Phone: (555) 123-4567<br>Email: info@elegantcuts.com</p>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2025 Elegant Cuts Salon. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // DOM Elements
+        const menuToggle = document.getElementById('menu-toggle');
+        const navLinks = document.getElementById('nav-links');
+        const navItems = document.querySelectorAll('.nav-links a');
+        const homeLink = document.getElementById('home-link');
+        const heroBookingBtn = document.getElementById('hero-booking-btn');
+        const aboutBookingBtn = document.getElementById('about-booking-btn');
+        const serviceBookingBtns = document.querySelectorAll('.service-booking-btn');
+
+        // Page Navigation
+        const homePage = document.getElementById('home-page');
+        const servicesPage = document.getElementById('services-page');
+        const bookingPage = document.getElementById('booking-page');
+        const confirmationPage = document.getElementById('confirmation-page');
+
+        // Nav Links
+        const homeNav = document.getElementById('home-nav');
+        const servicesNav = document.getElementById('services-nav');
+        const bookingNav = document.getElementById('booking-nav');
+        const aboutNav = document.getElementById('about-nav');
+        const contactNav = document.getElementById('contact-nav');
+
+        // Footer Links
+        const footerHomeLink = document.querySelector('.footer-home-link');
+        const footerServicesLink = document.querySelector('.footer-services-link');
+        const footerBookingLink = document.querySelector('.footer-booking-link');
+        const footerAboutLink = document.querySelector('.footer-about-link');
+        const footerContactLink = document.querySelector('.footer-contact-link');
+        const serviceLinks = document.querySelectorAll('.service-link');
+
+        // Form Elements
+        const bookingForm = document.getElementById('booking-form');
+        const serviceSelect = document.getElementById('service');
+        const stylistSelect = document.getElementById('stylist');
+        const dateInput = document.getElementById('date');
+        const timeSlots = document.querySelectorAll('.time-slot');
+        const selectedTimeInput = document.getElementById('selected-time');
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const phoneInput = document.getElementById('phone');
+        const notesInput = document.getElementById('notes');
+
+        // Confirmation Elements
+        const confirmService = document.getElementById('confirm-service');
+        const confirmStylist = document.getElementById('confirm-stylist');
+        const confirmDate = document.getElementById('confirm-date');
+        const confirmTime = document.getElementById('confirm-time');
+        const confirmPrice = document.getElementById('confirm-price');
+        const confirmEmail = document.getElementById('confirm-email');
+        const backToHomeBtn = document.getElementById('back-to-home');
+
+        // Database Service for API communication
+        const DatabaseService = {
+            // API endpoints
+            apiEndpoint: '/api/bookings',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+
+            // Save a booking to the database
+            saveBooking: async function(bookingData) {
+                try {
+                    const response = await fetch(this.apiEndpoint, {
+                        method: 'POST',
+                        headers: this.headers,
+                        body: JSON.stringify(bookingData)
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`Server responded with ${response.status}: ${response.statusText}`);
+                    }
+
+                    return await response.json();
+                } catch (error) {
+                    console.error('Error saving booking:', error);
+                    throw error;
+                }
+            }
+        };
+
+        // UI notification functions
+        const NotificationService = {
+            showNotification: function(message, type = 'success') {
+                const notificationContainer = document.getElementById('notification-container') ||
+                    this.createNotificationContainer();
+
+                const notification = document.createElement('div');
+                notification.className = `notification ${type}`;
+                notification.innerHTML = `
+            <div class="notification-content">
+                <span>${message}</span>
+                <button class="close-notification">&times;</button>
+            </div>
+        `;
+
+                notificationContainer.appendChild(notification);
+
+                // Auto-remove after 5 seconds
+                setTimeout(() => {
+                    notification.classList.add('fade-out');
+                    setTimeout(() => {
+                        notification.remove();
+                    }, 300);
+                }, 5000);
+
+                // Close button functionality
+                notification.querySelector('.close-notification').addEventListener('click', () => {
+                    notification.classList.add('fade-out');
+                    setTimeout(() => {
+                        notification.remove();
+                    }, 300);
+                });
+            },
+
+            createNotificationContainer: function() {
+                const container = document.createElement('div');
+                container.id = 'notification-container';
+                document.body.appendChild(container);
+
+                // Add styles for notifications
+                const style = document.createElement('style');
+                style.textContent = `
+            #notification-container {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                z-index: 9999;
+                max-width: 350px;
+            }
+            
+            .notification {
+                background-color: white;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                border-radius: 6px;
+                margin-bottom: 10px;
+                overflow: hidden;
+                animation: slide-in 0.3s ease-out;
+            }
+            
+            .notification.fade-out {
+                animation: slide-out 0.3s ease-out;
+            }
+            
+            .notification-content {
+                padding: 15px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            
+            .notification.success {
+                border-left: 4px solid #10b981;
+            }
+            
+            .notification.error {
+                border-left: 4px solid #ef4444;
+            }
+            
+            .notification.warning {
+                border-left: 4px solid #f59e0b;
+            }
+            
+            .close-notification {
+                background: none;
+                border: none;
+                font-size: 1.2rem;
+                cursor: pointer;
+                color: #64748b;
+            }
+            
+            @keyframes slide-in {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+            
+            @keyframes slide-out {
+                from { transform: translateX(0); opacity: 1; }
+                to { transform: translateX(100%); opacity: 0; }
+            }
+        `;
+                document.head.appendChild(style);
+
+                return container;
+            }
+        };
+
+        // Loading indicator for form submission
+        const LoadingService = {
+            showLoading: function(elementId, text = 'Saving...') {
+                const element = document.getElementById(elementId);
+                if (!element) return;
+
+                // Store original content
+                element.dataset.originalContent = element.innerHTML;
+
+                // Replace with loading spinner
+                element.innerHTML = `
+            <span class="loading-spinner"></span>
+            <span>${text}</span>
+        `;
+                element.disabled = true;
+
+                // Add spinner style if not already added
+                if (!document.getElementById('loading-spinner-style')) {
+                    const style = document.createElement('style');
+                    style.id = 'loading-spinner-style';
+                    style.textContent = `
+                .loading-spinner {
+                    display: inline-block;
+                    width: 16px;
+                    height: 16px;
+                    border: 2px solid rgba(255, 255, 255, 0.3);
+                    border-radius: 50%;
+                    border-top-color: white;
+                    animation: spin 0.8s linear infinite;
+                    margin-right: 8px;
+                }
+                
+                @keyframes spin {
+                    to { transform: rotate(360deg); }
+                }
+            `;
+                    document.head.appendChild(style);
+                }
+            },
+
+            hideLoading: function(elementId) {
+                const element = document.getElementById(elementId);
+                if (!element || !element.dataset.originalContent) return;
+
+                element.innerHTML = element.dataset.originalContent;
+                element.disabled = false;
+                delete element.dataset.originalContent;
+            }
+        };
+
+        // Mobile Menu Toggle
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuToggle.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (navLinks.classList.contains('active') &&
+                !navLinks.contains(e.target) &&
+                e.target !== menuToggle) {
+                navLinks.classList.remove('active');
+                menuToggle.textContent = '☰';
+            }
+        });
+
+        // Handle page navigation
+        function navigateToPage(pageId) {
+            // Remove active class from all pages and nav links
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active-page');
+            });
+
+            navItems.forEach(item => {
+                item.classList.remove('nav-active');
+            });
+
+            // Add active class to selected page
+            document.getElementById(pageId).classList.add('active-page');
+
+            // Update active nav link
+            let navId;
+            switch (pageId) {
+                case 'home-page':
+                    navId = 'home-nav';
+                    break;
+                case 'services-page':
+                    navId = 'services-nav';
+                    break;
+                case 'booking-page':
+                    navId = 'booking-nav';
+                    break;
+                case 'confirmation-page':
+                    break;
+            }
+
+            if (navId) {
+                document.getElementById(navId).classList.add('nav-active');
+            }
+
+            // Close mobile menu if open
+            if (navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+                menuToggle.textContent = '☰';
+            }
+
+            // Scroll to top
+            window.scrollTo(0, 0);
+
+            // Trigger animations
+            animateElements();
+        }
+
+        // Handle navigation clicks
+        homeNav.addEventListener('click', (e) => {
+            e.preventDefault();
+            navigateToPage('home-page');
+        });
+
+        servicesNav.addEventListener('click', (e) => {
+            e.preventDefault();
+            navigateToPage('services-page');
+        });
+
+        bookingNav.addEventListener('click', (e) => {
+            e.preventDefault();
+            navigateToPage('booking-page');
+        });
+
+        aboutNav.addEventListener('click', (e) => {
+            e.preventDefault();
+            navigateToPage('home-page');
+            setTimeout(() => {
+                document.getElementById('about').scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }, 100);
+        });
+
+        contactNav.addEventListener('click', (e) => {
+            e.preventDefault();
+            navigateToPage('home-page');
+            setTimeout(() => {
+                document.getElementById('contact').scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }, 100);
+        });
+
+        homeLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            navigateToPage('home-page');
+        });
+
+        // Footer links
+        footerHomeLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            navigateToPage('home-page');
+        });
+
+        footerServicesLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            navigateToPage('services-page');
+        });
+
+        footerBookingLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            navigateToPage('booking-page');
+        });
+
+        footerAboutLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            navigateToPage('home-page');
+            setTimeout(() => {
+                document.getElementById('about').scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }, 100);
+        });
+
+        footerContactLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            navigateToPage('home-page');
+            setTimeout(() => {
+                document.getElementById('contact').scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }, 100);
+        });
+
+        // Service links in footer
+        serviceLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const service = e.target.getAttribute('data-service');
+                navigateToPage('booking-page');
+                setTimeout(() => {
+                    // Set the service in the dropdown
+                    for (const option of serviceSelect.options) {
+                        if (option.value === service) {
+                            serviceSelect.value = service;
+                            break;
+                        }
+                    }
+                }, 100);
+            });
+        });
+
+        // Book Now buttons
+        heroBookingBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            navigateToPage('booking-page');
+        });
+
+        aboutBookingBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            navigateToPage('booking-page');
+        });
+
+        serviceBookingBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const service = e.target.getAttribute('data-service');
+                navigateToPage('booking-page');
+                setTimeout(() => {
+                    // Set the service in the dropdown
+                    for (const option of serviceSelect.options) {
+                        if (option.value === service) {
+                            serviceSelect.value = service;
+                            break;
+                        }
+                    }
+                }, 100);
+            });
+        });
+
+        // Back to home button
+        backToHomeBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            navigateToPage('home-page');
+        });
+
+        // Time slot selection
+        timeSlots.forEach(slot => {
+            if (slot.classList.contains('available')) {
+                slot.addEventListener('click', () => {
+                    // Remove selected class from all time slots
+                    timeSlots.forEach(s => s.classList.remove('selected'));
+                    // Add selected class to this time slot
+                    slot.classList.add('selected');
+                    // Update the hidden input
+                    selectedTimeInput.value = slot.getAttribute('data-time');
+                    // Hide error message if shown
+                    document.getElementById('time-error').style.display = 'none';
+                });
+            }
+        });
+
+        // Form validation and submission to server
+        bookingForm.addEventListener('submit', async(e) => {
+            e.preventDefault();
+
+            // Make sure the submit button has an ID for the loading indicator
+            const submitBtn = bookingForm.querySelector('button[type="submit"]');
+            if (!submitBtn.id) {
+                submitBtn.id = 'booking-submit-btn';
+            }
+
+            // Show loading indicator
+            LoadingService.showLoading(submitBtn.id, 'Booking...');
+
+            let isValid = true;
+
+            // Service validation
+            if (!serviceSelect.value) {
+                document.getElementById('service-error').style.display = 'block';
+                isValid = false;
+            } else {
+                document.getElementById('service-error').style.display = 'none';
+            }
+
+            // Date validation
+            if (!dateInput.value) {
+                document.getElementById('date-error').style.display = 'block';
+                isValid = false;
+            } else {
+                document.getElementById('date-error').style.display = 'none';
+            }
+
+            // Time validation
+            if (!selectedTimeInput.value) {
+                document.getElementById('time-error').style.display = 'block';
+                isValid = false;
+            } else {
+                document.getElementById('time-error').style.display = 'none';
+            }
+
+            // Name validation
+            if (!nameInput.value.trim()) {
+                document.getElementById('name-error').style.display = 'block';
+                isValid = false;
+            } else {
+                document.getElementById('name-error').style.display = 'none';
+            }
+
+            // Email validation
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailInput.value.trim() || !emailPattern.test(emailInput.value)) {
+                document.getElementById('email-error').style.display = 'block';
+                isValid = false;
+            } else {
+                document.getElementById('email-error').style.display = 'none';
+            }
+
+            // Phone validation
+            const phonePattern = /^[\d\s\(\)\-\+]{10,15}$/;
+            if (!phoneInput.value.trim() || !phonePattern.test(phoneInput.value)) {
+                document.getElementById('phone-error').style.display = 'block';
+                isValid = false;
+            } else {
+                document.getElementById('phone-error').style.display = 'none';
+            }
+
+            if (isValid) {
+                try {
+                    // Prepare the booking data for the server
+                    const selectedService = serviceSelect.options[serviceSelect.selectedIndex].text;
+                    const selectedPrice = serviceSelect.options[serviceSelect.selectedIndex].getAttribute('data-price');
+                    const selectedStylist = stylistSelect.value ? stylistSelect.options[stylistSelect.selectedIndex].text : 'Any Available Stylist';
+
+                    const bookingData = {
+                        clientName: nameInput.value.trim(),
+                        clientPhone: phoneInput.value.trim(),
+                        clientEmail: emailInput.value.trim(),
+                        serviceId: serviceSelect.value,
+                        serviceName: selectedService.split(' - ')[0],
+                        stylistId: stylistSelect.value || '0',
+                        stylistName: selectedStylist,
+                        date: dateInput.value,
+                        time: selectedTimeInput.value,
+                        notes: notesInput.value,
+                        status: 'scheduled',
+                        createdAt: new Date().toISOString()
+                    };
+
+                    // Send the booking to the server
+                    await DatabaseService.saveBooking(bookingData);
+
+                    // Populate confirmation page
+                    confirmService.textContent = selectedService.split(' - ')[0];
+                    confirmStylist.textContent = selectedStylist;
+                    confirmDate.textContent = formatDate(dateInput.value);
+                    confirmTime.textContent = formatTime(selectedTimeInput.value);
+                    confirmPrice.textContent = '$' + selectedPrice;
+                    confirmEmail.textContent = emailInput.value;
+
+                    // Show a success notification
+                    NotificationService.showNotification('Booking successfully created!', 'success');
+
+                    // Navigate to confirmation page
+                    navigateToPage('confirmation-page');
+                } catch (error) {
+                    console.error('Error saving booking:', error);
+                    NotificationService.showNotification(`Error: ${error.message}`, 'error');
+                } finally {
+                    // Hide loading indicator
+                    LoadingService.hideLoading(submitBtn.id);
+                }
+            } else {
+                // Hide loading indicator if validation fails
+                LoadingService.hideLoading(submitBtn.id);
+            }
+        });
+
+        // Format date for confirmation
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            const options = {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            };
+            return date.toLocaleDateString('en-US', options);
+        }
+
+        // Format time for confirmation
+        function formatTime(timeString) {
+            return timeString + (timeString.includes('AM') ? '' : ' PM');
+        }
+
+        // Set minimum date to tomorrow
+        const tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        const tomorrowFormatted = tomorrow.toISOString().split('T')[0];
+        dateInput.setAttribute('min', tomorrowFormatted);
+
+        // Animate elements when they come into view
+        function animateElements() {
+            // For service cards
+            const serviceCards = document.querySelectorAll('.service-card');
+            serviceCards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.classList.add('animate');
+                }, index * 100);
+            });
+
+            // For form container
+            const formContainer = document.querySelector('.form-container');
+            if (formContainer) {
+                formContainer.classList.add('animate');
+
+                // Animate form groups with delay
+                const formGroups = document.querySelectorAll('.form-group');
+                formGroups.forEach((group, index) => {
+                    setTimeout(() => {
+                        group.classList.add('animate');
+                    }, 300 + (index * 100)); // Start after form container animation
+                });
+            }
+
+            // About section animations
+            const aboutImage = document.querySelector('.about-image');
+            const aboutText = document.querySelector('.about-text');
+
+            if (aboutImage && aboutText) {
+                aboutImage.classList.add('animate');
+                aboutText.classList.add('animate');
+            }
+
+            // Contact section animations
+            const contactInfo = document.querySelector('.contact-info');
+            const contactMap = document.querySelector('.contact-map');
+
+            if (contactInfo && contactMap) {
+                contactInfo.classList.add('animate');
+                contactMap.classList.add('animate');
+            }
+        }
+
+        // Run animations when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set min date for booking to tomorrow
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            dateInput.value = tomorrow.toISOString().split('T')[0];
+
+            // Animate elements on initial load
+            animateElements();
+        });
+
+        // Intersection Observer for scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, {
+            threshold: 0.2
+        });
+
+        // Observe elements that should animate on scroll
+        document.querySelectorAll('.service-card, .about-image, .about-text, .contact-info, .contact-map').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+
+</html>
